@@ -1,18 +1,18 @@
-#require_relative 'rooms'
+require_relative 'classes'
 
-class Room
-  attr :description, true
-  attr :inventory, true
-  attr :directions, true
-  attr :requirements, true
-
-  def update(des,inv,dir,req)
-    self.description = des
-    self.inventory = inv
-    self.directions = dir
-    self.requirements = req
-  end
-end
+#class Room
+#  attr :description, true
+#  attr :inventory, true
+#  attr :directions, true
+#  attr :requirements, true
+#
+#  def update(des,inv,dir,req)
+#    self.description = des
+#    self.inventory = inv
+#    self.directions = dir
+#    self.requirements = req
+#  end
+#end
 
 room1 = Room.new
 room2 = Room.new
@@ -34,13 +34,13 @@ class App
   end
 end
 
-class Player
-  attr :position, true
-
-  def initialize(room)
-    self.position = room
-  end
-end
+#class Player
+#  attr :position, true
+#
+#  def initialize(room)
+#    self.position = room
+#  end
+#end
 
 player1 = Player.new(room1)
 
