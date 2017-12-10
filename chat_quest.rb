@@ -2,15 +2,19 @@ require_relative 'classes'
 
 game = App.new
 
-room1 = Room.new
+town_square = Room.new
 room2 = Room.new
 room3 = Room.new
+tavern = Room.new
+bank = Room.new
 
-room1.update("This is room1. Welcome!",[],{"nw" => room3, "w" => room2},[])
-room2.update("This is room2.",["spoon"],{"e" => room1},["fork"])
-room3.update("This is room3.",["fork"],{"se" => room1},[])
+town_square.update("You are standing in front of a tavern whose enterance is to the north.",[],{"n" => tavern, "e" => bank, "nw" => room3, "w" => room2},[])
+room2.update("This is room2.",["spoon"],{"e" => town_square},["fork"])
+room3.update("This is room3.",["fork"],{"se" => town_square},[])
+tavern.update("You are inside a tavern.", [], {"s" => town_square}, [])
+bank.update("You are inside the Autumnfall bank.", ["bag of gold coins"], {"w" => town_square}, [])
 
-player1 = Player.new(room1)
+player1 = Player.new(town_square)
 
 loop do
   print "> "
@@ -51,11 +55,15 @@ loop do
         puts puts player1.position.description
       else
         puts player1.position.description
-        puts puts "This room has a " + player1.position.inventory[0] + " in it."
+        puts puts "There is a " + player1.position.inventory[0] + " here."
       end
 
     when 'inventory', 'items'
-      puts player1.inventory
+      if !player1.inventory.empty?
+        puts player1.inventory
+      else
+        puts "There is nothing in your inventory."
+      end
 
     when 'take', 'grab'
       if(!txt.empty? && player1.position.inventory.include?(txt.downcase))
@@ -64,7 +72,13 @@ loop do
       else
         puts puts "I do not understand"
       end
-    
+
+    when 'drop'
+      if (!txt.empty?)
+        player1.removeItem(txt.downcase)
+        player1.position.inventory.push(txt.downcase)
+      end
+
     else
       puts App.invalidCommand
   end 

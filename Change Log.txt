@@ -1,0 +1,9 @@
+Change Log
+
+1. Created branch to try mapping James' game description.
+2. added initial version of Autumnfall game description from James.
+3. Changed the look description text from "This room has a " x " in it." to "There is a " x " here." to be more generic that room.
+4. Added the drop command.
+
+171210_1246 Commit "Added Autumnfall modifications"
+

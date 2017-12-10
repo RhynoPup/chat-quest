@@ -40,6 +40,7 @@ class Player
   def removeItem(item)
     self.inventory.delete(item)
   end
+
 end
 
 class Room
