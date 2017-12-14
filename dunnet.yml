@@ -1,0 +1,25 @@
+---
+# Definitions for each room/area
+
+deadEnd:
+  name: "Dead end"
+  description: "You are at a dead end of a dirt road. The road goes to the east.\nIn the distance you can see that it will eventually fork off. The \ntrees here are very tall royal palms, and they are spaced equidistant \nfrom each other."
+  inventory: ["shovel"]
+  directions: {"e" => EWDirtRoad}
+  requirements: []
+
+EWDirtRoad:
+  name: "E/W Dirt road"
+  description: "You are on the continuation of a dirt road. There are more trees on both sides of you. The road continues to the east and west."
+  inventory: ["large boulder"]
+  directions: {"e" => fork, "w" => deadEnd}
+  requirements: []
+
+fork:
+  name: "Fork"
+  description: "You are at a fork of two passages, one to the northeast, and one to the southeast. The ground here seems very soft. You can also go back west."
+  inventory: []
+  directions: {"w" => EWDirtRoad}
+  requirements: []
+
+...
