@@ -1,16 +1,22 @@
 require_relative 'classes'
+require 'yaml'
 
 game = App.new
 
-room1 = Room.new
-room2 = Room.new
-room3 = Room.new
+deadEnd = Room.new
+EWDirtRoad = Room.new
+fork = Room.new
+room4 = Room.new
 
-room1.update("This is room1. Welcome!",[],{"nw" => room3, "w" => room2},[])
-room2.update("This is room2.",["spoon"],{"e" => room1},["fork"])
-room3.update("This is room3.",["fork"],{"se" => room1},[])
+deadEnd.update("Dead end", "You are at a dead end of a dirt road. The road goes to the east.\nIn the distance you can see that it will eventually fork off. The \ntrees here are very tall royal palms, and they are spaced equidistant \nfrom each other.",["shovel"],{"e" => EWDirtRoad},[])
+EWDirtRoad.update("E/W Dirt road", "You are on the continuation of a dirt road. There are more trees on both sides of you. The road continues to the east and west.",["large boulder"],{"e" => fork, "w" => deadEnd},[])
+fork.update("Fork", "You are at a fork of two passages, one to the northeast, and one to the southeast. The ground here seems very soft. You can also go back west.",[],{"se" => room4, "ne" => room4, "w" => EWDirtRoad},[])
+#room4.update("This is room4.",[],{"s" => room4},[])
 
-player1 = Player.new(room1)
+player1 = Player.new(deadEnd)
+player1.addItem("A lamp")
+puts player1.position.name
+puts player1.position.details
 
 loop do
   print "> "
@@ -47,12 +53,7 @@ loop do
       end
 
     when 'look'
-      if (player1.position.inventory.empty?)
-        puts puts player1.position.description
-      else
-        puts player1.position.description
-        puts puts "This room has a " + player1.position.inventory[0] + " in it."
-      end
+      puts player1.position.details
 
     when 'inventory', 'items'
       puts player1.inventory
@@ -62,7 +63,7 @@ loop do
         player1.addItem(txt.downcase)
         player1.position.inventory.delete(txt.downcase)
       else
-        puts puts "I do not understand"
+        puts "I do not understand\n\n"
       end
     
     else

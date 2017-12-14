@@ -3,7 +3,7 @@ class App
     puts "hello to you too"
   end
   def self.invalidCommand
-    puts "Invalid command"
+    puts "I don't understand that"
   end
   def self.moveCommand(direction)
     puts "You said go, " + direction
@@ -14,12 +14,12 @@ class App
       req = player.position.directions[direction].requirements
       if (req == (req & player.inventory) || req == (player.inventory & req))
         player.position = player.position.directions[direction]
-        puts puts player.position.description
+        puts player.position.details
       else
-        puts puts "Your path is blocked"
+        puts "Your path is blocked\n\n"
       end
     else
-      puts puts "You cannot move that way"
+      puts "You cannot move that way\n\n"
     end
   end
 end
@@ -47,11 +47,21 @@ class Room
   attr :inventory, true
   attr :directions, true
   attr :requirements, true
+  attr :name, true
 
-  def update(des,inv,dir,req)
+  def update(name, des,inv,dir,req)
+    self.name = name
     self.description = des
     self.inventory = inv
     self.directions = dir
     self.requirements = req
+  end
+
+  def details
+    if (self.inventory.empty?)
+        return self.description + "\n\n"
+      else
+        return self.description + "\nThis room has a " + self.inventory[0] + " in it.\n\n"
+      end
   end
 end
