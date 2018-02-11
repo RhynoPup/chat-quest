@@ -28,18 +28,20 @@ room3:
     - se: town_square
   requirements: []
 
-#tavern:
-#  name: "Tavern"
-#  description: "You are inside a tavern."
-#  inventory: []
-#  directions: {"s" => town_square}
-#  requirements: []
+tavern:
+  name: "Tavern"
+  description: "You are inside a tavern."
+  inventory: []
+  directions: 
+    - s: town_square
+  requirements: []
 
-#bank:
-#  name: "Bank"
-#  description: "You are inside the Autumnfall bank."
-#  inventory: ["bag of gold coins"]
-#  directions: {"w" => town_square}
-#  requirements: []
+bank:
+  name: "Bank"
+  description: "You are inside the Autumnfall bank."
+  inventory: ["bag of gold coins"]
+  directions: 
+    - w: town_square
+  requirements: []
 
 ...

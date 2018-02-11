@@ -10,6 +10,7 @@ class App
   end
 
   def move(direction, player)
+    # checks current players room (position) for the array of available direction hashes
     if (player.position.directions.key?(direction))
       req = player.position.directions[direction].requirements
       if (req == (req & player.inventory) || req == (player.inventory & req))
