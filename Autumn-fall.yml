@@ -5,35 +5,39 @@ town_square:
   name: "Town Square"
   description: "You are standing in front of a tavern whose enterance is to the north."
   inventory: []
-  directions: {"n" => tavern, "e" => bank, "nw" => room3, "w" => room2}
+  directions: 
+    - north: tavern
+    - east: bank
+    - northwest: room3
+    - west: room2
   requirements: []
 
-room2:
-  name: "Room2"
-  description: "This is room2."
-  inventory: ["spoon"]
-  directions: {"e" => town_square},
-  requirements: ["fork"]
+#room2:
+#  name: "Room2"
+#  description: "This is room2."
+#  inventory: ["spoon"]
+#  directions: {"e" => town_square},
+#  requirements: ["fork"]
 
-room3:
-  name: "Room3"
-  description: "This is room3."
-  inventory: ["fork"]
-  directions: {"se" => town_square}
-  requirements: []
+#room3:
+#  name: "Room3"
+#  description: "This is room3."
+#  inventory: ["fork"]
+#  directions: {"se" => town_square}
+#  requirements: []
 
-tavern:
-  name: "Tavern"
-  description: "You are inside a tavern."
-  inventory: []
-  directions: {"s" => town_square}
-  requirements: []
+#tavern:
+#  name: "Tavern"
+#  description: "You are inside a tavern."
+#  inventory: []
+#  directions: {"s" => town_square}
+#  requirements: []
 
-bank:
-  name: "Bank"
-  description: "You are inside the Autumnfall bank."
-  inventory: ["bag of gold coins"]
-  directions: {"w" => town_square}
-  requirements: []
+#bank:
+#  name: "Bank"
+#  description: "You are inside the Autumnfall bank."
+#  inventory: ["bag of gold coins"]
+#  directions: {"w" => town_square}
+#  requirements: []
 
 ...
