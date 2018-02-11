@@ -6,25 +6,27 @@ town_square:
   description: "You are standing in front of a tavern whose enterance is to the north."
   inventory: []
   directions: 
-    - north: tavern
-    - east: bank
-    - northwest: room3
-    - west: room2
+    - n: tavern
+    - e: bank
+    - nw: room3
+    - w: room2
   requirements: []
 
-#room2:
-#  name: "Room2"
-#  description: "This is room2."
-#  inventory: ["spoon"]
-#  directions: {"e" => town_square},
-#  requirements: ["fork"]
+room2:
+  name: "Room2"
+  description: "This is room2."
+  inventory: ["spoon"]
+  directions:
+    - e: town_square
+  requirements: ["fork"]
 
-#room3:
-#  name: "Room3"
-#  description: "This is room3."
-#  inventory: ["fork"]
-#  directions: {"se" => town_square}
-#  requirements: []
+room3:
+  name: "Room3"
+  description: "This is room3."
+  inventory: ["fork"]
+  directions: 
+    - se: town_square
+  requirements: []
 
 #tavern:
 #  name: "Tavern"
