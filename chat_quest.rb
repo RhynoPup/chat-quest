@@ -1,9 +1,9 @@
-require_relative 'classes'
+ require_relative 'classes'
 require 'yaml'
 
 game = App.new
 
-data = YAML.load_file("test.yml")
+data = YAML.load_file("dunnet.yml")
 
 print data["test"]
 
